@@ -17,6 +17,9 @@
     <target name="compile">
         <mkdir dir="${classes.dir}"/>
         <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"/>
+        <copy todir="${classes.dir}">
+            <fileset dir="${src.dir}" excludes="**/*.java"/>
+        </copy>
     </target>
 
     <target name="jar" depends="compile">
@@ -42,6 +45,6 @@
     </target>
 
     <target name="clean-build" depends="clean,jar"/>
-    <target name="main" depends="run"/>
+    <target name="main" depends="clean,run"/>
 
 </project>
